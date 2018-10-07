@@ -61,6 +61,11 @@ class SectionsController < ApplicationController
     end
   end
 
+  def search
+    @sections = Section.where("number like ?", "%#{params[:query]}%")
+    render :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_section
@@ -69,6 +74,6 @@ class SectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def section_params
-      params.require(:section).permit(:semester, :number, :course_id, :room_number)
+      params.require(:section).permit(:semester, :number, :course_id, :room_number, :query)
     end
 end

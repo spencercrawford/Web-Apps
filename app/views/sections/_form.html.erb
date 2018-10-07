@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :semester %>
-    <%= form.text_field :semester %>
-  </div>
-
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.number_field :number %>
-  </div>
-
-  <div class="field">
     <%= form.label :course_id %>
-    <%= form.collection_select :course_id, Course.all, :id, :name, prompt: "Course" %>
+    <%= form.collection_select :course_id, Course.order(:name), :id, :name, prompt: "Course", required: true, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semester %>
+    <%= form.text_field :semester, required: true, autofocus: true, placeholder: "Semester" %>
   </div>
 
   <div class="field">
     <%= form.label :room_number %>
-    <%= form.number_field :room_number %>
+    <%= form.number_field :room_number, required: true, autofocus: true, placeholder: "Room Number" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.number_field :number, required: true, autofocus: true, placeholder: "Number" %>
   </div>
 
   <div class="actions">

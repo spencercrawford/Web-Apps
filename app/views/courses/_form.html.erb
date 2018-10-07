@@ -13,22 +13,22 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true, autofocus: true, placeholder: "Name" %>
   </div>
 
   <div class="field">
     <%= form.label :department %>
-    <%= form.text_field :department %>
+    <%= form.text_field :department, required: true, autofocus: true, placeholder: "Department" %>
   </div>
 
   <div class="field">
     <%= form.label :number %>
-    <%= form.number_field :number %>
+    <%= form.number_field :number, required: true, autofocus: true, placeholder: "Number" %>
   </div>
 
   <div class="field">
     <%= form.label :credit_hours %>
-    <%= form.number_field :credit_hours %>
+    <%= form.number_field :credit_hours, required: true, autofocus: true, placeholder: "Credit Hours" %>
   </div>
 
   <div class="actions">

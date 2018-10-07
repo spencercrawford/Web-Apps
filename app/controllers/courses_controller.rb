@@ -61,6 +61,11 @@ class CoursesController < ApplicationController
     end
   end
 
+  def search
+    @courses = Course.where("name like ?", "%#{params[:query]}%")
+    render :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
@@ -69,6 +74,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :department, :number, :credit_hours)
+      params.require(:course).permit(:name, :department, :number, :credit_hours, :query)
     end
 end
