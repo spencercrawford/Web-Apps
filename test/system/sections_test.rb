@@ -17,7 +17,7 @@ class SectionsTest < ApplicationSystemTestCase
     fill_in "Course", with: @section.course_id
     fill_in "Number", with: @section.number
     fill_in "Room Number", with: @section.room_number
-    fill_in "Semester", with: @section.semester
+    fill_in "Semester", with: @section.semester_id
     click_on "Create Section"
 
     assert_text "Section was successfully created"
@@ -31,7 +31,7 @@ class SectionsTest < ApplicationSystemTestCase
     fill_in "Course", with: @section.course_id
     fill_in "Number", with: @section.number
     fill_in "Room Number", with: @section.room_number
-    fill_in "Semester", with: @section.semester
+    fill_in "Semester", with: @section.semester_id
     click_on "Update Section"
 
     assert_text "Section was successfully updated"

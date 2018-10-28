@@ -13,22 +13,22 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, required: true, autofocus: true, placeholder: "Name" %>
+    <%= form.text_field :name, style: 'text-transform: capitalize;', required: true, autofocus: true, placeholder: "Name" %>
   </div>
 
   <div class="field">
     <%= form.label :department %>
-    <%= form.text_field :department, required: true, autofocus: true, placeholder: "Department" %>
+    <%= form.text_field :department, style: 'text-transform: capitalize;', required: true, autofocus: true, placeholder: "Department" %>
   </div>
 
   <div class="field">
     <%= form.label :number %>
-    <%= form.number_field :number, required: true, autofocus: true, placeholder: "Number" %>
+    <%= form.number_field :number, min: 1, max: 10000, required: true, autofocus: true, placeholder: "Number" %>
   </div>
 
   <div class="field">
     <%= form.label :credit_hours %>
-    <%= form.number_field :credit_hours, required: true, autofocus: true, placeholder: "Credit Hours" %>
+    <%= form.number_field :credit_hours, min: 2, max: 4, step: 2, required: true, autofocus: true, placeholder: "Credit Hours" %>
   </div>
 
   <div class="actions">

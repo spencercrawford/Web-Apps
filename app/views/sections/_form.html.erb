@@ -17,18 +17,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :semester %>
-    <%= form.text_field :semester, required: true, autofocus: true, placeholder: "Semester" %>
+    <%= form.label :semester_id %>
+    <%= form.collection_select :semester_id, Semester.order(:term), :id, :term, prompt: "Semester", required: true, autofocus: true %>
   </div>
 
   <div class="field">
     <%= form.label :room_number %>
-    <%= form.number_field :room_number, required: true, autofocus: true, placeholder: "Room Number" %>
+    <%= form.number_field :room_number, min: 1, max: 10000, placeholder: "Room Number", required: true, autofocus: true %>
   </div>
 
   <div class="field">
     <%= form.label :number %>
-    <%= form.number_field :number, required: true, autofocus: true, placeholder: "Number" %>
+    <%= form.number_field :number, min: 1, max: 10, placeholder: "Number", required: true, autofocus: true %>
   </div>
 
   <div class="actions">

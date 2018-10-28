@@ -3,6 +3,12 @@ require 'test_helper'
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @course = courses(:one)
+    @update = {
+        credit_hours: 4,
+        department: "Computer Science",
+        name: "Web Apps",
+        number: 390
+    }
   end
 
   test "should get index" do
@@ -17,7 +23,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create course" do
     assert_difference('Course.count') do
-      post courses_url, params: { course: { credit_hours: @course.credit_hours, department: @course.department, name: @course.name, number: @course.number } }
+      post courses_url, params: { course: @update }
     end
 
     assert_redirected_to course_url(Course.last)
@@ -34,7 +40,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update course" do
-    patch course_url(@course), params: { course: { credit_hours: @course.credit_hours, department: @course.department, name: @course.name, number: @course.number } }
+    patch course_url(@course), params: { course: @update }
     assert_redirected_to course_url(@course)
   end
 
