@@ -1,0 +1,129 @@
+<!--Spencer Crawford-->
+<!--12/2/2018-->
+<!--Web Application Architecture-->
+<!--Assignment 5-->
+<html>
+<head>
+	<title>Assignment 5</title>
+	<script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<label><strong>Assignment 5</strong></label>
+
+<br><br>
+
+<button onclick="fetch('courses', ['name','department','number','credit_hours'])">Courses</button>
+<button onclick="fetch('sections', ['course_id','semester_id','room_number','number'])">Sections</button>
+<button onclick="fetch('students', ['name','course_id','section_id'])">Students</button>
+
+<br><br>
+
+<div id="list">
+</div>
+
+<script>
+ $(document).ready(function()
+ {
+    function find_Data(which)
+		{
+      var output = null;
+      $.get(
+				{
+        	url : "http://localhost:3000/" + which + ".json",
+        	async : false,
+        	success : function(data) {output = data; console.log('output: ' + data)}
+     		});
+    	console.log(output);
+			return output;
+		}
+
+    $("#sections").on('click', function()
+		{
+        function find_Course(data)
+				{
+           var course = getData("courses/" + data.course_id);
+           return course.course_name;
+    		}
+    fetch('sections', ['semester', 'section_id', 'room_number', find_Course]);
+  	});
+});
+
+function find_Student(path, id)
+{
+  var output = null;
+  $.get(
+		{
+      url : "http://localhost:3000/" + path + ".json",
+      dataType : "json",
+      async : false,
+      uccess : function(data) {output = data; console.log('output: ' + data) }
+    });
+      console.log(output);
+      for(scnd in output)
+			{
+        if (output[scnd].id == id)
+				{
+					var thrd = output[scnd].name;
+					console.log('output: ' + thrd);
+				}
+      }
+return thrd;
+}
+
+function find_Section(path, id)
+{
+  var output = null;
+  $.get(
+		{
+      url : "http://localhost:3000/" + path + ".json",
+      dataType : "json",
+      async : false,
+      success : function(data) {output = data; console.log('output: ' + data)}
+    });
+    	console.log(output);
+      for(scnd in output)
+			{
+      	if (output[scnd].id == id)
+				{
+					var thrd = output[scnd].section_id;
+					console.log('output: ' + thrd);
+				}
+      }
+return thrd;
+}
+
+ var fetch = function(which, fields)
+ {
+  $("#list").empty();
+  console.log('output: ' + fields);
+  $.get("http://localhost:3000/" + which + ".json", true)
+  .done(function(json)
+	{
+  	for (item in json)
+		{
+    	lis = "<li>";
+      for( index in fields)
+			{
+      	var field = fields[index];
+        if($.isFunction(field))
+				{
+        	lis += field(json[item])+ " ";
+				}
+					else
+					{
+          	lis += json[item][field]+ " ";
+        	}
+      }
+			lis += "</li>";
+      $("#list").append(lis);
+    }
+  })
+.fail(function(json){ console.log("fail"); })
+};
+</script>
+</body>
+</html>

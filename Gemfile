@@ -65,3 +65,5 @@ gem 'jquery-turbolinks'
 gem 'bundler'
 gem "bulma-rails", "~> 0.7.2"
 gem 'devise'
+gem 'rack-cors', :require => 'rack/cors'
+

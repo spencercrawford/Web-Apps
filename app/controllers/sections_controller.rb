@@ -58,7 +58,7 @@ class SectionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to sections_url, notice: 'Section was successfully destroyed.' }
       format.json { head :no_content }
-    end
+    er
   end
 
   def search
@@ -76,4 +76,5 @@ class SectionsController < ApplicationController
     def section_params
       params.require(:section).permit(:course_id, :semester_id, :room_number, :number, :query)
     end
-end
+  end
+  end
